@@ -25,6 +25,7 @@ public class UserDaoImpl implements UserDao{
 	
 @Autowired MongoTemplate temp;
 @Autowired UserRepository repo;
+
 	@Override
 	public User save(User user) {
 		return repo.save(user);

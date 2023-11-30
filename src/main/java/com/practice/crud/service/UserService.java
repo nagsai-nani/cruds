@@ -1,8 +1,11 @@
 package com.practice.crud.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
-
+import java.util.ListIterator;
+import java.util.function.Consumer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -66,6 +69,7 @@ public class UserService {
 	public Paginate<User> getAll(int page,int size) {
 		
 	Page<User> paginated = dao.getAll(page, size);
+	paginated.getSort();
 	Paginate<User> result=new Paginate<User>();
 	result.setList(paginated.getContent());
 	result.setSize(paginated.getSize());
@@ -102,7 +106,6 @@ public class UserService {
 	}
 
 	public List<User> getAll() {
-	
 		return dao.getAll();
 	}
 
@@ -111,7 +114,6 @@ public class UserService {
 		if(users==null) {
 			throw new Exception("User not found");
 		}
-		
 		UserResponse response=null;
 		List<UserResponse> resp=new ArrayList<UserResponse>();
 		for (User user : users) {

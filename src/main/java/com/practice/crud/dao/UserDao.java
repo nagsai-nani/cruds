@@ -7,9 +7,8 @@ import org.springframework.data.domain.Page;
 import com.practice.crud.models.User;
 import com.practice.crud.request.dto.UserDto;
 
-public interface UserDao {
-
-	User save(User user);
+public interface UserDao { 
+	 User save(User user);
 
 	User getByUserName(String userName);
 
